@@ -1,13 +1,15 @@
--- All Orders For a Customer
--- This is a drilldown report that lists all orders for a given customer
--- VARIABLE: { name: "id", display: "Customer Id" }
+-- Search Teacher
+-- Enter Teacher ID
+-- VARIABLE: { name: "id", display: "Teacher Id" }
 
 SELECT
-    order_id as `Order Id`,
-    created_at as `Order Date`,
-    grand_total as `Grand Total`,
-    status as `Order Status`
+    id as `Teacher Id`,
+    CONCAT(first_name, " ", surname) as `Teacher Name`,
+    accreditation_number as `Accreditation Number`,
+    CONCAT(address_street, " ", address_city, " ", address_state, " ", address_postcode, " ", address_country) as `Address`,
+    contact_number as `Contact Number`
 FROM
-    orders
+    teacher
 WHERE
-    customer_id = "{{ id }}"
+    id = "{{ id }}"
+LIMIT 1000
